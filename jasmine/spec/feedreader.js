@@ -23,37 +23,41 @@ $(function() {
         it('are defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
-        }); 
+           }); 
 
         });
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-    
 
 
 
-    describe('allFeeds Check loop name and url',function(){
-    var id=0;
- 
-               
-       function testSpec1(p){
-         it('Name and url are defined in feed item ' + p, function() {
-            expect(allFeeds[p].name.length).not.toBe(0);
-            expect(allFeeds[p].url.length).not.toBe(0);
+
+    describe('tet2 ', function(){
+
+        beforeEach(function(){
+
+           addFixture("<div id='something'></div>");
+           addFixture("<ul></ul>");
+
         });
-       }
-     
-       for (var i=0; i < allFeeds.length; i++){
-         testSpec1(i);        
-       }
 
-      });
+        afterEach(function(){
+           clearMyFixtures();
+         });
+
+         it ("should invoke the btnShowMessage click event.", function() {
+          
+          expect('click').toHaveBeenTriggeredOn('#btnShowMessage');
+          expect(spyEvent).toHaveBeenTriggered();
+        });
+
+    });
 
 
 
-    describe('Check Menu hide',function(){
+/*    describe('Check Menu hide',function(){
     var id=0;
     var spyEvent;
 
@@ -78,30 +82,31 @@ $(function() {
         });
       });
 
-
+    */
 
     describe('Check for name and url',function(){
-    var id=0;
- 
+       var id=0;
 
-        beforeEach( function(done){
-            loadFeed(id,done);
+                 
+             beforeEach( function(done){
+                 loadFeed(id,done);
 
-        }); 
+              }); 
                
-       function testSpec(p){
-         it('Name and url are defined in feed item ' + p, function() {
-            expect(allEntries[p].title.length).not.toBe(0);
-            expect(allEntries[p].link.length).not.toBe(0);
-        });
-       }
+          
+
+             function testSpec(p){
+               it('Name and url are defined in feed item ' + p, function() {
+                   expect(allEntries[p].title.length).not.toBe(0);
+                   expect(allEntries[p].link.length).not.toBe(0);
+               });
+             }
      
-       for (var i=0; i < 10;i++){
-         testSpec(i);        
-       }
+             for (var i=0; i < 3;i++){
+                testSpec(i);        
+              }
 
-      });
-
+          });  
 
         
       
@@ -142,4 +147,4 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-});
+ }()); 
